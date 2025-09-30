@@ -108,7 +108,7 @@ function App() {
                             tickLine={false}
                             axisLine={false}
                         />
-                        <YAxis type="number" tick={false} axisLine={false} width="auto" />
+                        <YAxis type="number" tick={false} axisLine={false} width="auto" domain={[0, 5]} />
                     </BarChart>
                 </ResponsiveContainer>
             </Card>
@@ -154,8 +154,8 @@ function App() {
                     </ZoomableGroup>
                 </ComposableMap>
             </Card>
-            <div className="flex flex-col divide-y divide-neutral-200">
-                <div className="flex divide-x divide-neutral-200 bg-neutral-50 uppercase font-bold text-sm">
+            <div className="flex flex-col divide-y divide-neutral-200 w-full overflow-x-auto">
+                <div className="flex divide-x divide-neutral-200 bg-neutral-50 uppercase font-bold text-sm min-w-5xl">
                     <div className="px-4 py-2 flex-1">
                         Рейс
                     </div>
@@ -176,7 +176,7 @@ function App() {
                     </div>
                 </div>
                 {movedFlightTableData.map(([from, to]) => (
-                    <div className="flex divide-x divide-neutral-200" key={from.flight_id}>
+                    <div className="flex divide-x divide-neutral-200 min-w-5xl" key={from.flight_id}>
                         <div className="px-4 py-2 flex-1">
                             {from["Номер рейса"]}
                             {" "}
@@ -215,7 +215,7 @@ function App() {
                         </div>
                     </div>
                 ))}
-                <div className="flex items-center">
+                <div className="flex items-center min-w-5xl">
                     <button
                         type="button"
                         className="flex-1 text-blue-500 py-6 text-3xl font-bold hover:bg-neutral-100 disabled:text-neutral-500 disabled:pointer-events-none"
