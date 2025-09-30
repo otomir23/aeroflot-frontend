@@ -62,7 +62,7 @@ function App() {
                     Изменение расписания и дохода по рейсам
                 </p>
             </div>
-            <Card icon={RiStockFill} title="Изменение дохода" description="По всем рейсам">
+            <Card icon={RiStockFill} title="Изменение дохода" description="По всем рейсам" className="max-md:p-1">
                 <ResponsiveContainer>
                     <BarChart
                         data={model}
@@ -94,7 +94,7 @@ function App() {
                             <LabelList
                                 position="top"
                                 className="max-lg:[writing-mode:vertical-rl] max-lg:[text-orientation:mixed]"
-                                offset={10}
+                                offset={14}
                                 fontSize={8}
                                 fontWeight={700}
                                 valueAccessor={e => `${(+e.value).toFixed(2)}%`}
@@ -104,20 +104,28 @@ function App() {
                             interval={0}
                             fontSize={12}
                             dataKey="flight"
-                            className="[writing-mode:vertical-rl] [text-orientation:mixed]"
+                            className="[writing-mode:vertical-rl] [text-orientation:mixed] max-sm:hidden"
                             tickLine={false}
                             axisLine={false}
                         />
-                        <YAxis type="number" tick={false} axisLine={false} width="auto" domain={[0, 5]} />
+                        <XAxis
+                            interval={0}
+                            fontSize={10}
+                            dataKey="flight"
+                            className="[writing-mode:vertical-rl] [text-orientation:mixed] sm:hidden"
+                            tickLine={false}
+                            axisLine={false}
+                        />
+                        <YAxis type="number" tick={false} axisLine={false} width={0} domain={[0, 5]} />
                     </BarChart>
                 </ResponsiveContainer>
             </Card>
             <Card icon={RiGlobeFill} title="Карта полётов" description="Толщина зависит от прибыльности рейса" className="p-0 h-auto">
                 <ComposableMap
-                    height={380}
+                    height={390}
                     projection="geoEqualEarth"
                 >
-                    <ZoomableGroup center={[60, 28]} zoom={1.5} translateExtent={[[-80, -40], [850, 400]]}>
+                    <ZoomableGroup center={[60, 30]} zoom={2} translateExtent={[[-80, -40], [850, 400]]}>
                         <Graticule stroke="#efefef" />
                         <Geographies geography={worldGeo}>
                             {({ geographies }) =>
@@ -215,7 +223,7 @@ function App() {
                         </div>
                     </div>
                 ))}
-                <div className="flex items-center min-w-5xl">
+                <div className="flex items-center sticky left-0">
                     <button
                         type="button"
                         className="flex-1 text-blue-500 py-6 text-3xl font-bold hover:bg-neutral-100 disabled:text-neutral-500 disabled:pointer-events-none"
